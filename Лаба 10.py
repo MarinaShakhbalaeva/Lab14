@@ -21,7 +21,6 @@ def task2():
 
 
 
-
 a = int (input("Введите номер задачи - "))
 if a == 1:
     task1()
