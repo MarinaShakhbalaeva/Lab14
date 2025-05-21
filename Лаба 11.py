@@ -1,8 +1,9 @@
 from PIL import Image, ImageFilter
 import os
+import csv
 
 #11.1
-new = "Обработанные фото - 11.1"
+'''new = "Обработанные фото - 11.1"
 os.makedirs (new)
 for n in range (1, 6):
     name = "Исходники/" + str (n) + ".jpg"
@@ -23,4 +24,24 @@ for name in os.listdir ("Исходники"):
           newname1 = ("Обработанные фото - 11.2/" + str (name))
           newimg.save (newname1)
     else:
-      print ("Ошибка! В папке должны лежать только jpg и png")
+      print ("Ошибка! В папке должны лежать только jpg и png") '''
+
+
+#11.3
+sum = 0
+popupochki = []
+file = open ('products.csv', encoding='utf-8')
+reader = csv.DictReader(file)
+for row in reader:
+    product = row["Продукт"]
+    kolvo = int (row ["Количество"])
+    price = int (row ["Цена"])
+    cost = kolvo * price
+    sum += cost
+    popupochki.append (f"{product} - {kolvo} шт. \nОбщая стоимость = {price}")
+file.close ()
+print ("Не забудь купить: ")
+for i in popupochki:
+    print (i)
+print (f"Итоговая сумма = {sum}")
+
