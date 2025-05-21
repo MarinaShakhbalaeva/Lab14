@@ -19,7 +19,7 @@ for name in os.listdir ("Исходники"):
     if name.lower().endswith(('.jpg', '.png')):
           newname = "Исходники/" + name
           img = Image.open (newname)
-          newimg = img.filter (ImageFilter.UnsharpMask)
+          newimg = img.filter (ImageFilter.FIND_EDGES)
           newname1 = ("Обработанные фото - 11.2/" + str (name))
           newimg.save (newname1)
     else:
